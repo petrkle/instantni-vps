@@ -1,46 +1,3 @@
-php5-fpm:
-  pkg.installed:
-    - name: php5-fpm
-  service.running:
-    - name: php5-fpm
-    - enable: True
-
-php5-curl:
-  pkg:
-    - installed
-
-php5-cli:
-  pkg:
-    - installed
-
-php5-gd:
-  pkg:
-    - installed
-
-php5-mcrypt:
-  pkg:
-    - installed
-
-php5-mysql:
-  pkg:
-    - installed
-
-php-soap:
-  pkg:
-    - installed
-
-php-xml-parser:
-  pkg:
-    - installed
-
-php5-intl:
-  pkg:
-    - installed
-
-php5-sqlite:
-  pkg:
-    - installed
-
 php-home-www-dir-create:
   file.directory:
     - name: /home/www/
@@ -48,6 +5,36 @@ php-home-www-dir-create:
     - group: www-data
     - mode: 0755
     - makedirs: True
+
+php5-fpm:
+  pkg.installed:
+    - name: php5-fpm
+  service.running:
+    - name: php5-fpm
+    - enable: True
+    - watch:
+       - file: /etc/php5/fpm/php-fpm.conf
+       - file: /etc/php5/fpm/php.ini
+{% for pool, args in pillar['fpm_pools'].iteritems() %}
+       - file: /etc/php5/fpm/pool.d/{{ pool }}.conf
+{% endfor %}
+{% for website in pillar.nginx_confs %}
+       - file: /etc/nginx/conf.d/{{ website }}.conf
+{% endfor %}
+
+install-php5-pkgs:
+  pkg:
+    - installed
+    - names:
+        - php5-curl
+        - php5-cli
+        - php5-gd
+        - php5-mcrypt
+        - php5-mysql
+        - php5-intl
+        - php5-sqlite
+        - php-soap
+        - php-xml-parser
 
 {% for pool, args in pillar['fpm_pools'].iteritems() %}
 
@@ -61,8 +48,6 @@ php-home-www-dir-create:
   - mode: 644
   - user: root
   - group: root
-  - watch_in:
-      - service: php5-fpm
 
 php-sessions-dir-{{ pool }}:
   cmd.run:
@@ -78,8 +63,6 @@ php-home-dir-{{ pool }}-create:
     - group: www-data
     - mode: 0755
     - makedirs: True
-    - watch_in:
-      - service: php5-fpm
 {% endfor %}
 
 /usr/local/bin/mod_files.sh:
@@ -103,8 +86,6 @@ php-home-dir-{{ pool }}-create:
   - mode: 644
   - user: root
   - group: root
-  - watch_in:
-      - service: php5-fpm
 
 /etc/php5/fpm/php.ini:
  file.managed:
@@ -112,6 +93,3 @@ php-home-dir-{{ pool }}-create:
   - mode: 644
   - user: root
   - group: root
-  - watch_in:
-      - service: php5-fpm
-

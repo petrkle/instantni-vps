@@ -6,7 +6,7 @@ define('DB_NAME', 'ttrss');
 define('DB_PASS', '{{ pillar.mysql.ttrss_password}}');
 define('DB_PORT', '3306');
 define('MYSQL_CHARSET', 'UTF8');
-define('SELF_URL_PATH', 'https://rss.kle.cz/');
+define('SELF_URL_PATH', 'https://rss.{{ pillar.domain_example }}/');
 define('FEED_CRYPT_KEY', 'a4sd415asd5f^Nasdf68+23G');
 define('SINGLE_USER_MODE', false);
 define('SIMPLE_UPDATE_MODE', false);

@@ -6,7 +6,9 @@ cyrus-imapd:
   service.running:
     - name: cyrus-imapd
     - enable: True
-    - reload: True
+    - watch:
+        - file: /etc/cyrus.conf
+        - file: /etc/imapd.conf
 
 cyrus-admin-2.4:
   pkg:

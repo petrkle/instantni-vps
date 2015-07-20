@@ -89,6 +89,14 @@ fpm_pools:
   phpmyadmin:
    port: 9003
 
+nginx_confs:
+ - autoconfig
+ - awstats
+ - phpmyadmin
+ - roundcube
+ - staticsite
+ - ttrss
+
 # utility k nainstalování
 utils:
  - htop

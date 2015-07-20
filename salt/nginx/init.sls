@@ -19,7 +19,10 @@ nginx:
   service.running:
     - name: nginx
     - enable: True
-    - reload: True
+    - watch:
+{% for website in pillar.nginx_confs %}
+       - file: /etc/nginx/conf.d/{{ website }}.conf
+{% endfor %}
 
 /usr/share/nginx/html/index.html:
  file.managed:
@@ -72,5 +75,18 @@ http-auth-{{ user }}:
   cmd.run:
     - name: 'htpasswd -s -b /etc/nginx/htpasswd.{{ user }} {{ user }} {{ args['pass'] }}'
     - unless: 'cat /etc/nginx/htpasswd.{{ user }} | grep "^`htpasswd -s -b -n {{ user }} {{ args['pass'] }} | head -1`" > /dev/null'
+
+{% endfor %}
+
+{% for website in pillar.nginx_confs %}
+
+/etc/nginx/conf.d/{{ website }}.conf:
+ file.managed:
+  - source: salt://nginx/{{ website }}.conf
+  - mode: 644 
+  - user: root
+  - group: root
+  - template: jinja
+  - makedirs: True
 
 {% endfor %}

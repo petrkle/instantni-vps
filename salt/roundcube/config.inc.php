@@ -113,4 +113,4 @@ $config['mime_param_folding'] = 0;
 // 3 = send automatically if sender is in addressbook, otherwise ask the user
 // 4 = send automatically if sender is in addressbook, otherwise ignore
 $config['mdn_requests'] = 2;
-$rcmail_config['useragent'] = '{{ pillar.mailname }}';
+$rcmail_config['useragent'] = '{{ pillar.webmail_url }}';

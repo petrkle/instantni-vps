@@ -4,7 +4,6 @@ postfix:
   service.running:
     - name: postfix
     - enable: True
-    - reload: True
 
 postfix-pcre:
   pkg:

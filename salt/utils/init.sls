@@ -1,6 +1,7 @@
+install-my-utils-pkg:
+  pkg:
+    - installed
+    - names:
 {% for package in pillar.utils %}
-{{package}}:
-  pkg.installed:
-    - name: {{package}}
-    - install_recommends: False
+       - {{package}}
 {% endfor %}

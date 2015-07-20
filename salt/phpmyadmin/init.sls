@@ -20,15 +20,3 @@ chown-phpmyadmin-recursive:
   cmd.run:
     - name: chown -R www-data.www-data /home/www/phpmyadmin/phpmyadmin-RELEASE_{{ pillar.phpmyadmin.version }}
     - unless: test `stat -c '%U' /home/www/phpmyadmin/phpmyadmin-RELEASE_{{ pillar.phpmyadmin.version }}` = www-data
-
-/etc/nginx/conf.d/phpmyadmin.conf:
- file.managed:
-  - source: salt://nginx/phpmyadmin.conf
-  - mode: 644 
-  - user: root
-  - group: root
-  - template: jinja
-  - makedirs: True
-  - watch_in:
-      - service: nginx
-      - service: php5-fpm

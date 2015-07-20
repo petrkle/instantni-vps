@@ -16,18 +16,6 @@ roundcube-mail:
     - require:
       - file: /home/www/roundcube
 
-/etc/nginx/conf.d/roundcube.conf:
- file.managed:
-  - source: salt://nginx/roundcube.conf
-  - mode: 644 
-  - user: root
-  - group: root
-  - template: jinja
-  - makedirs: True
-  - watch_in:
-      - service: nginx
-      - service: php5-fpm
-
 /home/www/roundcube/roundcubemail-{{ pillar.roundcube.version }}/config/config.inc.php:
  file.managed:
   - source: salt://roundcube/config.inc.php

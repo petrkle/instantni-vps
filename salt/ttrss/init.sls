@@ -2,18 +2,6 @@ https://github.com/gothfox/Tiny-Tiny-RSS.git:
   git.latest:
     - target: /home/www/ttrss
 
-/etc/nginx/conf.d/ttrss.conf:
- file.managed:
-  - source: salt://nginx/ttrss.conf
-  - mode: 644 
-  - user: root
-  - group: root
-  - template: jinja
-  - makedirs: True
-  - watch_in:
-      - service: nginx
-      - service: php5-fpm
-
 /home/www/ttrss/config.php:
  file.managed:
   - source: salt://ttrss/config.php
