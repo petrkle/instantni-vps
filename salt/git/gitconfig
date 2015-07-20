@@ -1,0 +1,11 @@
+[user]
+        name = {{ pillar.admin_user }}
+        email = {{ pillar.admin_user }}@{{ pillar.base_mail_domain }}
+
+[core]
+        editor = vim 
+
+[color]
+        ui = true
+[push]
+	default = simple

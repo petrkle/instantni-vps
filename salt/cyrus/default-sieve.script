@@ -1,0 +1,7 @@
+require ["regex","fileinto","reject","vacation"];
+# rule:[Filtrování SPAMu]
+if header :regex "X-Spam-Status" "^Yes,"
+{
+  fileinto "Spam";
+  stop;
+}

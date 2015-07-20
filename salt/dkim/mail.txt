@@ -1,0 +1,2 @@
+mail._domainkey	IN	TXT	( "v=DKIM1; k=rsa; "
+	  "p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDGaGd4YFSlZGDH/mWP5RwMp9/TEX8Kpe1F0fuxazabX/jYpagasbZn2M/SP5JEJsMUU0MJm4Z33c/uTG+P/leMeO+qXgQp2I0wxuLsq7aY4xns30YiGxbKMTthVghOYnwWBwdt41uRLai6H3RkonyOHfitsKSDL8r/crFyFsK8HwIDAQAB" )  ; ----- DKIM key mail for example.cz

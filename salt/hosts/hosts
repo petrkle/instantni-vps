@@ -1,0 +1,22 @@
+127.0.0.1 localhost
+{{ pillar.ipv4adress }} {{ grains['host'] }}
+{{ pillar.ipv4adress }} {{ grains['fqdn'] }}
+{{ pillar.ipv4adress }} {{ pillar.hostname }}
+{{ pillar.ipv4adress }} {{ pillar.mailname }}
+
+{{ pillar.ipv4adress }} {{ pillar.domain_example }} www.{{ pillar.domain_example }}
+{{ pillar.ipv4adress }} {{ pillar.domain_foo }} www.{{ pillar.domain_foo }}
+{{ pillar.ipv4adress }} rss.{{ pillar.domain_example }}
+{{ pillar.ipv4adress }} db.{{ pillar.domain_example }}
+{{ pillar.ipv4adress }} stat.{{ pillar.domain_example }}
+{{ pillar.ipv4adress }} roundcube.{{ pillar.domain_example }}
+
+{% for foo in pillar.maildomains %}
+{{ pillar.ipv4adress }} autoconfig.{{ foo }}
+{%- endfor %}
+
+::1     localhost ip6-localhost ip6-loopback
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+
+{{ pillar.ipv6adress }} {{ pillar.hostname }}

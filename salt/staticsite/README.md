@@ -1,0 +1,3 @@
+# Staticsite
+
+Jednoduchý web

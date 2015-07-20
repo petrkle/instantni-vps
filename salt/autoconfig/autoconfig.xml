@@ -1,0 +1,26 @@
+<clientConfig version="1.1">                                                                                                      
+	<emailProvider id="{{ pillar.mailname }}">
+		{% for foo in pillar.maildomains %}
+		<domain>{{ foo }}</domain>
+		{% endfor %}
+    <displayName>%EMAILADDRESS%</displayName>
+    <displayShortName>%EMAILADDRESS%</displayShortName>
+    <incomingServer type="imap">
+      <hostname>{{ pillar.mailname }}</hostname>
+      <port>993</port>
+      <socketType>SSL</socketType> 
+      <authentication>password-cleartext</authentication>
+      <username>%EMAILADDRESS%</username> 
+    </incomingServer>
+    <outgoingServer type="smtp">
+      <hostname>{{ pillar.mailname }}</hostname>
+      <port>25</port>
+      <socketType>STARTTLS</socketType>
+      <authentication>password-cleartext</authentication>
+      <username>%EMAILADDRESS%</username>
+    </outgoingServer>
+    <documentation url="http://support.{{ pillar.base_mail_domain }}">
+      <descr lang="cz">Podpora</descr>
+    </documentation> 
+  </emailProvider>
+</clientConfig>

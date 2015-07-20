@@ -1,0 +1,3 @@
+{%- for foo in pillar.maildomains %}
+{{ foo }}	local
+{%- endfor -%}

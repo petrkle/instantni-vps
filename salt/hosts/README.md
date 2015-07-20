@@ -1,0 +1,3 @@
+# /etc/hosts
+
+Lokální dns

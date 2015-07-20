@@ -1,0 +1,26 @@
+alias cls='clear'                                                                                                                 
+alias date='date "+%-d. %-m. %Y %k:%M:%S"'
+alias df='df -Th' 
+alias bc='bc -lq' 
+alias ls='ls --color=auto'
+alias ll='ls -lp'
+export PROMPT_COMMAND="history -a; history -n"
+shopt -s histappend
+export HISTSIZE=10000
+export HISTFILESIZE=$HISTSIZE
+export HISTCONTROL=ignoreboth
+export HISTTIMEFORMAT='%F %T '
+export EDITOR=vim
+export VISUAL=$EDITOR
+export SVN_EDITOR=$EDITOR
+export LC_CTYPE=cs_CZ.UTF-8
+export LC_ALL=cs_CZ.UTF-8
+export LANG=cs_CZ.UTF-8
+export PERL_LWP_SSL_CA_PATH=/etc/ssl/certs
+{% if root == 'OK' %}
+alias saltrun='salt-call state.highstate --log-level=warning'
+{% else %}
+alias saltrun='sudo salt-call state.highstate --log-level=warning'
+[ -z "$PS1" ] && return
+[ -z "$XTERM_VERSION" ] && [ -z "$STY" ] && screen -dRR
+{% endif %}

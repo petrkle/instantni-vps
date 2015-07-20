@@ -1,0 +1,42 @@
+set nocp "nekompalita se starými vi                                                                                                
+filetype plugin indent on "odsazování podle typu souboru
+set backspace=indent,eol,start "backspace maže vše
+set background=dark " lepší čitelnost na tmavém pozadí
+set display=lastline "zobrazovat alespoň část řádku místo zavináčů
+set ignorecase "case insensitive vyhledávání
+set smartcase "vypne case insensitive při hledání slova s velkými písmeny
+set incsearch "při hledání hned zobrazuje prvně nálezené
+set nojoinspaces "nevkládá dvě mezery za větu při spojování řádků
+set number "číslování řádků
+set ruler "zobrazení pozice v dokumentu 
+set scrolloff=4 "počet řádků které mají být vidět před a za kurzorem
+set showbreak=\\ "označení zalomených řádků
+set showcmd "zobrazuje zadávaný přikaz
+set showmatch "zapíšete-li pravou závorku, ukáže vám její protějšek
+set showmode "zobrazuje --INSERT--
+set tabstop=2 "velikost tab
+set shiftwidth=2 "velikost odsazování
+set title "zobrazování informací v titulku okna
+set viminfo='50,r/mnt,n~/.viminfo "ukládání historie 
+set wildignore=*~,*.bak "při doplňování bude ignorováno
+set wildmenu "při <Tab> zobrazí možnosti
+set wildmode=longest,list "způsob doplňování 
+set wrap "zalamování řádků
+set fileencodings=utf-8,iso-8859-2,windows-1250
+syntax on "zvýraznění syntaxe
+set directory=~/tmp "dočasné soubory do tmp a ne do aktuálního adresáře
+
+"klávesové zkratky
+imap <C-d> <Del>
+imap <C-a> <C-b>
+cmap <C-d> <Del>
+cmap <C-a> <C-b>
+
+"trocha klávesových zkratek pro HTML
+let maplocalleader = "," 
+imap <LocalLeader>< &lt;
+imap <LocalLeader>> &gt;
+imap <LocalLeader>& &amp;
+imap <LocalLeader>n &nbsp;
+imap <C-t> <></><Esc>5hdiwp3lpT>i
+imap <LocalLeader>tab <table><CR><tr><CR><td></td><CR></tr><CR></table>

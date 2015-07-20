@@ -1,0 +1,5 @@
+{%- for foo in pillar.maildomains %}
+{%- if foo != pillar.base_mail_domain -%}
+{{ foo }}	OK
+{% endif %}
+{%- endfor -%}

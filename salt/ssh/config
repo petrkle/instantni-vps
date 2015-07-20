@@ -1,0 +1,14 @@
+Host vps
+  ForwardX11 no
+  Hostname=vps.example.com
+  Port=1234
+  IdentityFile=~/crypto/mykey_id_rsa
+  User=somebody
+
+Host private
+	ForwardX11 no
+	ForwardAgent no
+	Hostname=git.example.com
+	Port=2234
+	IdentityFile=~/crypto/mykey_id_rsa
+	User=joe

@@ -1,0 +1,43 @@
+/var/log/mail/errors {
+  monthly
+	sharedscripts
+	dateext
+	dateformat _%Y-%m-%s
+	notifempty
+	postrotate
+			/usr/bin/killall -HUP rsyslogd
+	endscript
+}
+
+/var/log/mail/info {
+  monthly
+	sharedscripts
+	dateext
+	dateformat _%Y-%m-%d-%s
+	notifempty
+	postrotate
+			/usr/bin/killall -HUP rsyslogd
+	endscript
+}
+
+/var/log/mail/notice {
+  monthly
+	sharedscripts
+	dateext
+	dateformat _%Y-%m-%d-%s
+	notifempty
+	postrotate
+			/usr/bin/killall -HUP rsyslogd
+	endscript
+}
+
+/var/log/mail/warnings {
+  monthly
+	sharedscripts
+	dateext
+	dateformat _%Y-%m-%d-%s
+	notifempty
+	postrotate
+			/usr/bin/killall -HUP rsyslogd
+	endscript
+}

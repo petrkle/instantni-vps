@@ -1,0 +1,10 @@
+file_client: local
+log_level_logfile: info
+mysql.default_file: '/etc/mysql/debian.cnf'
+file_roots:
+  base:
+    - /home/petr/instantni-vps/salt
+
+pillar_roots:
+  base:
+    - /home/petr/instantni-vps/pillar

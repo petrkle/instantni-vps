@@ -1,0 +1,3 @@
+# Mailboxes
+
+Založení mailových schránek

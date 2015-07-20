@@ -1,0 +1,13 @@
+/var/log/php5-fpm.log {
+	rotate 100
+	monthly
+  dateext
+  dateformat _%Y-%m-%d-%s
+	missingok
+	notifempty
+	compress
+	delaycompress
+	postrotate
+		invoke-rc.d php5-fpm reopen-logs > /dev/null
+	endscript
+}

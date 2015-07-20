@@ -1,0 +1,5 @@
+{%- for mailbox, args in pillar['mailboxes'].iteritems() %}
+{%- if not args['mailbox'].startswith('cyrus') -%}
+{{ args['mailbox'] }}		{{ args['mailbox'] }}
+{% endif %}
+{%- endfor -%}

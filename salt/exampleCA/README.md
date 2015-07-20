@@ -1,0 +1,3 @@
+# exampleCA
+
+Testovací certifikační autorita

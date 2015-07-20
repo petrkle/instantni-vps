@@ -1,0 +1,41 @@
+score DNS_FROM_AHBL_RHSBL 0
+
+header EXAMPLE_F_TRAVISCIORG   From =~ /\@travis-ci\.org/i
+describe EXAMPLE_F_TRAVISCIORG From travis-ci.org
+score EXAMPLE_F_TRAVISCIORG -20
+
+header EXAMPLE_F_NEWSLETTER   From =~ /.*newsletter.*/i
+describe EXAMPLE_F_NEWSLETTER From newsletter
+score EXAMPLE_F_NEWSLETTER 8
+
+header EXAMPLE_R_MAILKIT Received =~ /.*mailkit\.eu/i 
+describe EXAMPLE_R_MAILKIT From mailkit.eu
+score EXAMPLE_R_MAILKIT 8
+
+header EXAMPLE_R_MANDRILLAPPCOM Received =~ /.*mandrillapp\.com.*/i 
+describe EXAMPLE_R_MANDRILLAPPCOM From mandrillapp.com
+score EXAMPLE_R_MANDRILLAPPCOM 8
+
+header EXAMPLE_R_MAILKOMPLET Received =~ /.*mail-komplet.cz/i
+describe EXAMPLE_R_MAILKOMPLET From mail-komplet.cz
+score EXAMPLE_R_MAILKOMPLET 8
+
+header EXAMPLE_MID_SMARTEMAILING  Message-ID =~ /.*smartemailing.*/i
+describe EXAMPLE_MID_SMARTEMAILING Message-ID from smartemailing domain
+score EXAMPLE_MID_SMARTEMAILING 8
+
+body EXAMPLE_B_CONTAIN_SMARTEMAILING  /SmartEmailing\.cz/i
+describe EXAMPLE_B_CONTAIN_SMARTEMAILING SmartEmailing.cz
+score EXAMPLE_B_CONTAIN_SMARTEMAILING 8
+
+uri EXAMPLE_TRACKING_LINK_UTM_CAMPAIGN 	/utm_campaign/is
+describe EXAMPLE_TRACKING_LINK_UTM_CAMPAIGN Tracking link utm_campaign
+score EXAMPLE_TRACKING_LINK_UTM_CAMPAIGN 1
+
+uri EXAMPLE_LINK_TO_NEWSLETTER 	/newsletter/is
+describe EXAMPLE_LINK_TO_NEWSLETTER Link to newsletter
+score EXAMPLE_LINK_TO_NEWSLETTER 2
+
+uri EXAMPLE_LINK_TO_MAILING 	/mailing/is
+describe EXAMPLE_LINK_TO_MAILING Link to mailing
+score EXAMPLE_LINK_TO_MAILING 2

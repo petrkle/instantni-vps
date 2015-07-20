@@ -1,0 +1,47 @@
+#!/bin/sh -e
+# Start/stop/restart fakemail
+### BEGIN INIT INFO
+# Provides: fakemail
+# Required-Start: $network
+# Required-Stop: $network
+# Default-Start: 2 3 4 5
+# Default-Stop: 0 1 6
+# Short-Description: fakemail
+# Description: fakemail
+### END INIT INFO
+
+PID=/var/run/fakemail.pid
+
+fakemail_start(){
+  if [ -f $PID ]
+  then
+    fakemail_stop
+    rm -f $PID
+  else
+    sudo -u fakemail /usr/bin/fakemail --host=127.0.0.1 --port={{ pillar.fakemail['port'] }} --path={{ pillar.fakemail['home'] }} --background > $PID
+  fi  
+}
+
+fakemail_stop(){
+  [ -f $PID ] && kill `cat $PID && rm $PID`
+}
+
+fakemail_restart(){
+  fakemail_stop
+        sleep 1
+  fakemail_start
+}
+
+case "$1" in
+'start')
+  fakemail_start
+  ;;  
+'stop')
+  fakemail_stop
+  ;;  
+'restart')
+  fakemail_restart
+  ;;  
+*)
+        fakemail_start 
+esac

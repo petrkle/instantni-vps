@@ -1,0 +1,31 @@
+use strict;
+
+$max_servers = 1;
+$remove_existing_x_scanned_headers = 1;
+$remove_existing_spam_headers  = 1;
+$log_level = 2;
+$insert_received_line = 1;
+@mynetworks = qw( 127.0.0.0/8 );
+
+@local_domains_maps = ( [ 
+".$mydomain",
+{% for foo in pillar.maildomains -%}
+".{{ foo }}",
+{% endfor -%}
+]);
+
+$policy_bank{'MYNETS'} = {
+  bypass_spam_checks_maps   => [1],  # don't spam-check internal mail
+  bypass_virus_checks_maps   => [1],  # don't virus-check internal mail
+};
+
+$sa_mail_body_size_limit = 200*1024;
+$sa_local_tests_only = 0;
+
+$spam_quarantine_to = '{{ pillar.admin_user }}@{{ pillar.base_mail_domain }}';
+
+$sa_tag_level_deflt  = -9999;
+
+$sa_tag2_level_deflt = 6.5;
+
+1;

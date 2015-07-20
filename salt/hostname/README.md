@@ -1,0 +1,3 @@
+# Hostname
+
+Nastavení jména serveru

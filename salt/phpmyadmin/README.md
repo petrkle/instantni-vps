@@ -1,0 +1,3 @@
+# phpMyAdmin
+
+Správa MySQL databází

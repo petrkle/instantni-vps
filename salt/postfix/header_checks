@@ -1,0 +1,2 @@
+/^Subject: Bezplatne Vam poradime, jak zvysit Vas prijem/ REJECT SPAM detected
+/^From: .*PennyStockReporting.*/ REJECT SPAM detected

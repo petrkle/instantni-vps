@@ -1,0 +1,3 @@
+# Spamassassin
+
+Identifikace spamu

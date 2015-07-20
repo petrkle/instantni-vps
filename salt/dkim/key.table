@@ -1,0 +1,3 @@
+{%- for foo in pillar.maildomains -%}
+mail._domainkey.{{ foo }} {{ foo }}:mail:/etc/opendkim/mail.private
+{% endfor -%}

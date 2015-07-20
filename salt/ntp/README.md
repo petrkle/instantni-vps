@@ -1,0 +1,3 @@
+# ntp
+
+Synchronizace času

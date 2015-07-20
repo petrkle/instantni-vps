@@ -1,0 +1,73 @@
+smtpd_banner = $myorigin
+biff = no
+append_dot_mydomain = no
+readme_directory = no
+smtpd_tls_cert_file = /etc/cert/example.pem
+smtpd_tls_key_file = /etc/cert/example.key
+smtpd_use_tls = yes
+smtpd_tls_auth_only = yes
+smtpd_tls_session_cache_database = btree:${data_directory}/smtpd_scache
+smtp_tls_session_cache_database = btree:${data_directory}/smtp_scache
+smtpd_tls_exclude_ciphers = aNULL, eNULL, EXPORT, DES, RC4, MD5, PSK, aECDH, EDH-DSS-DES-CBC3-SHA, EDH-RSA-DES-CDC3-SHA, KRB5-DE5, CBC3-SHA
+smtpd_tls_dh1024_param_file = /etc/cert/dhparams.pem
+myhostname = {{ pillar.mailname }}
+mydomain = {{ pillar.base_mail_domain }}
+alias_maps = hash:/etc/aliases
+alias_database = hash:/etc/aliases
+myorigin = $myhostname
+mydestination = $mydomain, localhost
+{% if grains['testmachine'] == 'OK' %}
+relayhost = 127.0.0.1:{{ pillar.fakemail['port'] }}
+{% else %}
+relayhost = 
+{% endif %}
+mynetworks = 127.0.0.0/8 [::ffff:127.0.0.0]/104 [::1]/128
+mailbox_size_limit = 0
+recipient_delimiter = +
+inet_interfaces = all
+mailbox_transport = lmtp:unix:/var/run/cyrus/socket/lmtp
+unknown_local_recipient_reject_code = 550
+smtpd_sasl_auth_enable = yes
+
+smtpd_sender_login_maps = hash:/etc/postfix/sasl-senders
+
+smtpd_sender_restrictions =
+ reject_authenticated_sender_login_mismatch,
+ permit_sasl_authenticated,
+ permit_mynetworks,
+ hash:/etc/postfix/require-auth-domains,
+ reject_unknown_sender_domain
+
+smtpd_recipient_restrictions =
+ permit_sasl_authenticated,
+ permit_mynetworks,
+ reject_unauth_destination,
+ check_client_access hash:/etc/postfix/rbl-whitelist,
+ reject_rbl_client psbl.surriel.com,
+ reject_rbl_client b.barracudacentral.org,
+ reject_rbl_client sbl-xbl.spamhaus.org
+
+message_reject_characters = \0
+strict_rfc821_envelopes = yes
+disable_vrfy_command = yes
+smtpd_sasl_authenticated_header = yes
+broken_sasl_auth_clients = no
+enable_long_queue_ids = yes
+
+local_recipient_maps = hash:/etc/postfix/mailboxes
+virtual_mailbox_maps = hash:/etc/postfix/mailboxes
+virtual_mailbox_domains = hash:/etc/postfix/domains
+virtual_alias_maps = hash:/etc/postfix/virtual
+
+{% if grains['testmachine'] != 'OK' %}
+content_filter = smtp-amavis:[127.0.0.1]:10024
+{% endif %}
+smtp-amavis_destination_concurrency_limit = 1
+
+milter_default_action = accept
+smtpd_milters = inet:localhost:8891
+non_smtpd_milters = $smtpd_milters
+
+header_checks = regexp:/etc/postfix/header_checks
+mime_header_checks = regexp:/etc/postfix/mime_header_checks
+transport_maps = hash:/etc/postfix/transport

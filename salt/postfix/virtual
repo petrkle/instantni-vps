@@ -1,0 +1,8 @@
+root@{{ pillar.mailname }}  root@{{ pillar.base_mail_domain }}
+
+{% for foo in pillar.maildomains  %}
+root@{{ foo }}	{{ pillar.admin_user }}@{{ pillar.base_mail_domain }}
+MAILER-DAEMON@{{ foo }} root@{{ foo }}
+postmaster@{{ foo }} root@{{ foo }}
+admin@{{ foo }} root@{{ foo }}
+{% endfor %}

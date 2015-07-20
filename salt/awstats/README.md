@@ -1,0 +1,3 @@
+# Awstats
+
+Statistiky návštěvnosti webu
