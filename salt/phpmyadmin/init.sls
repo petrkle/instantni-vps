@@ -16,6 +16,17 @@ phpmyadmin:
     - require:
       - file: /home/www/phpmyadmin
 
+/home/www/phpmyadmin/phpmyadmin-RELEASE_{{ pillar.phpmyadmin.version }}/config.inc.php:
+ file.managed:
+  - source: salt://phpmyadmin/config.inc.php
+  - mode: 644 
+  - user: www-data
+  - group: www-data
+  - template: jinja
+  - require:
+     - file: /home/www/phpmyadmin
+
+
 chown-phpmyadmin-recursive:
   cmd.run:
     - name: chown -R www-data.www-data /home/www/phpmyadmin/phpmyadmin-RELEASE_{{ pillar.phpmyadmin.version }}
