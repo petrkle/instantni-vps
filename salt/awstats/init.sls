@@ -7,7 +7,7 @@ awstats:
 
 /usr/local/bin/wwwstats.sh:
  file.managed:
-  - source: salt://awstats/wwwstats.sh                                                                                           
+  - source: salt://awstats/wwwstats.sh
   - mode: 755 
   - user: root
   - template: jinja
