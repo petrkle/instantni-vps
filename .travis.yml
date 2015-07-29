@@ -1,17 +1,16 @@
 language: python
 python:
-- '2.7'
+  - '2.7'
 
 before_install:
   - sudo apt-get update
   - curl -L http://bootstrap.saltstack.org | sudo sh -s -- git develop
 
 install:
-  # Copy these states
   - sudo cp -r salt /srv/
   - sudo cp -r pillar /srv/
-  - sudo echo "mysql.default_file: '/etc/mysql/debian.cnf'" > /etc/salt/minion
-  - sudo echo "testmachine: OK" > /etc/salt/grains
+  - sudo echo 'mysql.default_file: /etc/mysql/debian.cnf' > /etc/salt/minion
+  - sudo echo 'testmachine: OK' > /etc/salt/grains
   - sudo service salt-minion stop
   - sudo salt-call grains.items --local
 
