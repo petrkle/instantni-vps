@@ -1,4 +1,4 @@
-https://github.com/gothfox/Tiny-Tiny-RSS.git:
+https://tt-rss.org/gitlab/fox/tt-rss.git:
   git.latest:
     - target: /home/www/ttrss
 
