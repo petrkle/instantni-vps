@@ -1,6 +1,6 @@
 [user]
-        name = {{ pillar.admin_user }}
-        email = {{ pillar.admin_user }}@{{ pillar.base_mail_domain }}
+        name = Petr
+        email = petr@kle.cz
 
 [core]
         editor = vim 
