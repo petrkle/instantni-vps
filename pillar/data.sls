@@ -54,8 +54,8 @@ fakemail:
   home: /home/fakemail
 
 roundcube:
-  version: 1.1.2
-  md5: c899c9a0d61a4171b771fde4959b7ed5
+  version: 1.1.3
+  md5: 3b07c65c2eb5ac8d248f8f311609afa8
 
 phpmyadmin:
   version: "4_4_14"

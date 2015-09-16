@@ -35,6 +35,7 @@ install-php5-pkgs:
         - php5-sqlite
         - php-soap
         - php-xml-parser
+        - php-net-sieve
 
 {% for pool, args in pillar['fpm_pools'].iteritems() %}
 
