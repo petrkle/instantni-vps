@@ -1,4 +1,4 @@
-set nocp "nekompalita se starými vi                                                                                                
+set nocp "nekompalita se starými vi
 filetype plugin indent on "odsazování podle typu souboru
 set backspace=indent,eol,start "backspace maže vše
 set background=dark " lepší čitelnost na tmavém pozadí
@@ -25,18 +25,4 @@ set wrap "zalamování řádků
 set fileencodings=utf-8,iso-8859-2,windows-1250
 syntax on "zvýraznění syntaxe
 set directory=~/tmp "dočasné soubory do tmp a ne do aktuálního adresáře
-
-"klávesové zkratky
-imap <C-d> <Del>
-imap <C-a> <C-b>
-cmap <C-d> <Del>
-cmap <C-a> <C-b>
-
-"trocha klávesových zkratek pro HTML
-let maplocalleader = "," 
-imap <LocalLeader>< &lt;
-imap <LocalLeader>> &gt;
-imap <LocalLeader>& &amp;
-imap <LocalLeader>n &nbsp;
 imap <C-t> <></><Esc>5hdiwp3lpT>i
-imap <LocalLeader>tab <table><CR><tr><CR><td></td><CR></tr><CR></table>
