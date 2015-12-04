@@ -1,4 +1,4 @@
-/var/log/php5-fpm.log {
+/var/log/php-fpm.log {
 	rotate 100
 	monthly
   dateext
@@ -8,6 +8,6 @@
 	compress
 	delaycompress
 	postrotate
-		invoke-rc.d php5-fpm reopen-logs > /dev/null
+		invoke-rc.d php7.0-fpm reopen-logs > /dev/null
 	endscript
 }

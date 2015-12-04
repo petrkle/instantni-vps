@@ -9,12 +9,15 @@ logrotate:
   - user: root
   - group: root
 
-/etc/logrotate.d/php5-fpm:
+/etc/logrotate.d/php-fpm:
  file.managed:
-  - source: salt://logrotate/php5-fpm
+  - source: salt://logrotate/php-fpm
   - mode: 644
   - user: root
   - group: root
+
+/etc/logrotate.d/php5-fpm:
+ file.absent
 
 /etc/logrotate.d/nginx:
  file.managed:
