@@ -8,7 +8,7 @@ roundcube-dir-create:
 roundcube-mail:
   archive.extracted:
     - name: /home/www/roundcube
-    - source: https://github.com/roundcube/roundcubemail/releases/download/{{ pillar.roundcube.version }}/roundcubemail-{{ pillar.roundcube.version }}.tar.gz
+    - source: https://downloads.sourceforge.net/project/roundcubemail/roundcubemail-beta/{{ pillar.roundcube.version }}/roundcubemail-{{ pillar.roundcube.version }}-complete.tar.gz
     - source_hash: md5={{ pillar.roundcube.md5 }}
     - tar_options: --ungzip --same-owner
     - archive_format: tar

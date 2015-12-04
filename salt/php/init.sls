@@ -1,3 +1,18 @@
+/etc/apt/sources.list.d/dotdeb.list:
+ file.managed:
+  - source: salt://php/dotdeb.list
+  - mode: 644
+  - user: root
+  - group: root
+
+dotdeb-keys:
+  cmd.script:
+    - source: salt://php/dotdeb-key.sh
+    - user: root
+    - group: root
+    - shell: /bin/bash
+    - unless: 'apt-key list | grep 89DF5277'
+
 php-home-www-dir-create:
   file.directory:
     - name: /home/www/
@@ -6,25 +21,9 @@ php-home-www-dir-create:
     - mode: 0755
     - makedirs: True
 
-php5-fpm:
-  pkg.installed:
-    - name: php5-fpm
-  service.running:
-    - name: php5-fpm
-    - enable: True
-    - watch:
-       - file: /etc/php5/fpm/php-fpm.conf
-       - file: /etc/php5/fpm/php.ini
-{% for pool, args in pillar['fpm_pools'].iteritems() %}
-       - file: /etc/php5/fpm/pool.d/{{ pool }}.conf
-{% endfor %}
-{% for website in pillar.nginx_confs %}
-       - file: /etc/nginx/conf.d/{{ website }}.conf
-{% endfor %}
-
-install-php5-pkgs:
+remove-php5-pkgs:
   pkg:
-    - installed
+    - removed
     - names:
         - php5-curl
         - php5-cli
@@ -33,13 +32,44 @@ install-php5-pkgs:
         - php5-mysql
         - php5-intl
         - php5-sqlite
-        - php-soap
-        - php-xml-parser
-        - php-net-sieve
+        - php5-common
+        - php5-json
+
+/etc/init.d/php5-fpm:
+ file.absent
+
+php70-fpm:
+  pkg.installed:
+    - name: php7.0-fpm
+  service.running:
+    - name: php7.0-fpm
+    - enable: True
+    - watch:
+       - file: /etc/php/7.0/fpm/php-fpm.conf
+       - file: /etc/php/7.0/fpm/php.ini
+{% for pool, args in pillar['fpm_pools'].iteritems() %}
+       - file: /etc/php/7.0/fpm/pool.d/{{ pool }}.conf
+{% endfor %}
+{% for website in pillar.nginx_confs %}
+       - file: /etc/nginx/conf.d/{{ website }}.conf
+{% endfor %}
+
+install-php-pkgs:
+  pkg:
+    - installed
+    - names:
+        - php7.0-common
+        - php7.0-curl
+        - php7.0-cli
+        - php7.0-gd
+        - php7.0-mysql
+        - php7.0-intl
+        - php7.0-sqlite3
+        - php7.0-json
 
 {% for pool, args in pillar['fpm_pools'].iteritems() %}
 
-/etc/php5/fpm/pool.d/{{ pool }}.conf:
+/etc/php/7.0/fpm/pool.d/{{ pool }}.conf:
  file.managed:
   - source: salt://php/{{ pool }}.conf
   - template: jinja
@@ -52,8 +82,8 @@ install-php5-pkgs:
 
 php-sessions-dir-{{ pool }}:
   cmd.run:
-    - name: 'mod_files.sh /var/lib/php5/sessions/{{ pool }} 2 5 && chown -R www-data.www-data /var/lib/php5/sessions/{{ pool }}'
-    - unless: 'test -d /var/lib/php5/sessions/{{ pool }}'
+    - name: 'mod_files.sh /var/lib/php/sessions/{{ pool }} 2 5 && chown -R www-data.www-data /var/lib/php/sessions/{{ pool }}'
+    - unless: 'test -d /var/lib/php/sessions/{{ pool }}'
     - require:
       - file: /usr/local/bin/mod_files.sh
 
@@ -81,14 +111,14 @@ php-home-dir-{{ pool }}-create:
   - user: root
   - group: root
 
-/etc/php5/fpm/php-fpm.conf:
+/etc/php/7.0/fpm/php-fpm.conf:
  file.managed:
   - source: salt://php/php-fpm.conf
   - mode: 644
   - user: root
   - group: root
 
-/etc/php5/fpm/php.ini:
+/etc/php/7.0/fpm/php.ini:
  file.managed:
   - source: salt://php/php.ini
   - mode: 644

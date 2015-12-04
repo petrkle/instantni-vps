@@ -54,12 +54,12 @@ fakemail:
   home: /home/fakemail
 
 roundcube:
-  version: 1.1.3
-  md5: 3b07c65c2eb5ac8d248f8f311609afa8
+  version: 1.2-beta
+  md5: 855011200946e253ab491125b60c0576
 
 phpmyadmin:
-  version: "4_5_0"
-  md5: 228e3adca208d24ef9bd2067877a67ed
+  version: "4_5_2"
+  md5: b74dc06fd912cc77bfce9c54e7faf93e
 
 mysql:
   root_password: n6kjNL8cvqkuvcg
