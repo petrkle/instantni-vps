@@ -66,6 +66,7 @@ install-php-pkgs:
         - php7.0-intl
         - php7.0-sqlite3
         - php7.0-json
+        - php7.0-mcrypt
 
 {% for pool, args in pillar['fpm_pools'].iteritems() %}
 
