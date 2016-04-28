@@ -1,4 +1,4 @@
-ssh_port: 2234 # port na kterém běží ssh server
+ssh_port: 22 # port na kterém běží ssh server
 
 {% macro admin_user() %}petr{% endmacro %}
 admin_user: {{ admin_user() }} # uživatel který spravuje server

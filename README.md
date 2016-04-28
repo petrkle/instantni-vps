@@ -2,6 +2,12 @@
 
 Rychlé nastavení vlastního serveru pomocí [saltstack](https://saltstack.cz).
 
-Vyzkoušeno s [Debian Jessie](https://github.com/petrkle/debian/tree/gh-pages).
+     git clone https://github.com/petrkle/instantni-vps.git
+     
+     cd instantni-vps
+     
+     vagrant plugin install vagrant-hostsupdater
+     
+     vagrant up
 
-> sudo salt-call state.highstate
+Budete potřebovat [Virtualbox](https://www.virtualbox.org), [Vagrant](https://www.vagrantup.com) a pro větší úpravy i [Packer](https://www.packer.io).
