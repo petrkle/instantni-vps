@@ -12,5 +12,7 @@ $cfg['Servers'][$i]['host'] = 'localhost';
 $cfg['Servers'][$i]['connect_type'] = 'tcp';
 $cfg['Servers'][$i]['compress'] = false;
 $cfg['Servers'][$i]['AllowNoPassword'] = false;
-
-$i++;
+$cfg['VersionCheck'] = false;
+$cfg['LoginCookieValidity'] = 7*24*3600;
+$cfg['LoginCookieStore'] = 7*24*3600;
+$cfg['MaxRows'] = 100;

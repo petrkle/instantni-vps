@@ -67,6 +67,10 @@ install-php-pkgs:
         - php7.0-sqlite3
         - php7.0-json
         - php7.0-mcrypt
+        - php7.0-mbstring
+        - php7.0-dom
+        - php7.0-zip
+        - php7.0-bz2
 
 {% for pool, args in pillar['fpm_pools'].iteritems() %}
 
