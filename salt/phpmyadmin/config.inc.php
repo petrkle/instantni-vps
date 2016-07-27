@@ -16,3 +16,5 @@ $cfg['VersionCheck'] = false;
 $cfg['LoginCookieValidity'] = 7*24*3600;
 $cfg['LoginCookieStore'] = 7*24*3600;
 $cfg['MaxRows'] = 100;
+$cfg['NavigationTreeEnableExpansion'] = false;
+$cfg['SendErrorReports'] = 'never';
