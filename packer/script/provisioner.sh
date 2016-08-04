@@ -5,63 +5,53 @@ set -e
 # Exit if we use any unset variable (use ${VAR:-} to test for unset var)
 set -o nounset
 
-echo 'deb http://debian.saltstack.com/debian wheezy-saltstack main' > /etc/apt/sources.list.d/saltstack.list
+echo 'deb http://repo.saltstack.com/apt/debian/8/amd64/latest jessie main' > /etc/apt/sources.list.d/saltstack.list
 
 echo '
 -----BEGIN PGP PUBLIC KEY BLOCK-----
-Version: GnuPG v1.4.12 (GNU/Linux)
+Version: GnuPG v2
 
-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
-=yj2S
+mQENBFOpvpgBCADkP656H41i8fpplEEB8IeLhugyC2rTEwwSclb8tQNYtUiGdna9
+m38kb0OS2DDrEdtdQb2hWCnswxaAkUunb2qq18vd3dBvlnI+C4/xu5ksZZkRj+fW
+tArNR18V+2jkwcG26m8AxIrT+m4M6/bgnSfHTBtT5adNfVcTHqiT1JtCbQcXmwVw
+WbqS6v/LhcsBE//SHne4uBCK/GHxZHhQ5jz5h+3vWeV4gvxS3Xu6v1IlIpLDwUts
+kT1DumfynYnnZmWTGc6SYyIFXTPJLtnoWDb9OBdWgZxXfHEcBsKGha+bXO+m2tHA
+gNneN9i5f8oNxo5njrL8jkCckOpNpng18BKXABEBAAG0MlNhbHRTdGFjayBQYWNr
+YWdpbmcgVGVhbSA8cGFja2FnaW5nQHNhbHRzdGFjay5jb20+iQE4BBMBAgAiBQJT
+qb6YAhsDBgsJCAcDAgYVCAIJCgsEFgIDAQIeAQIXgAAKCRAOCKFJ3le/vhkqB/0Q
+WzELZf4d87WApzolLG+zpsJKtt/ueXL1W1KA7JILhXB1uyvVORt8uA9FjmE083o1
+yE66wCya7V8hjNn2lkLXboOUd1UTErlRg1GYbIt++VPscTxHxwpjDGxDB1/fiX2o
+nK5SEpuj4IeIPJVE/uLNAwZyfX8DArLVJ5h8lknwiHlQLGlnOu9ulEAejwAKt9CU
+4oYTszYM4xrbtjB/fR+mPnYh2fBoQO4d/NQiejIEyd9IEEMd/03AJQBuMux62tjA
+/NwvQ9eqNgLw9NisFNHRWtP4jhAOsshv1WW+zPzu3ozoO+lLHixUIz7fqRk38q8Q
+9oNR31KvrkSNrFbA3D89uQENBFOpvpgBCADJ79iH10AfAfpTBEQwa6vzUI3Eltqb
+9aZ0xbZV8V/8pnuU7rqM7Z+nJgldibFk4gFG2bHCG1C5aEH/FmcOMvTKDhJSFQUx
+uhgxttMArXm2c22OSy1hpsnVG68G32Nag/QFEJ++3hNnbyGZpHnPiYgej3FrerQJ
+zv456wIsxRDMvJ1NZQB3twoCqwapC6FJE2hukSdWB5yCYpWlZJXBKzlYz/gwD/Fr
+GL578WrLhKw3UvnJmlpqQaDKwmV2s7MsoZogC6wkHE92kGPG2GmoRD3ALjmCvN1E
+PsIsQGnwpcXsRpYVCoW7e2nW4wUf7IkFZ94yOCmUq6WreWI4NggRcFC5ABEBAAGJ
+AR8EGAECAAkFAlOpvpgCGwwACgkQDgihSd5Xv74/NggA08kEdBkiWWwJZUZEy7cK
+WWcgjnRuOHd4rPeT+vQbOWGu6x4bxuVf9aTiYkf7ZjVF2lPn97EXOEGFWPZeZbH4
+vdRFH9jMtP+rrLt6+3c9j0M8SIJYwBL1+CNpEC/BuHj/Ra/cmnG5ZNhYebm76h5f
+T9iPW9fFww36FzFka4VPlvA4oB7ebBtquFg3sdQNU/MmTVV4jPFWXxh4oRDDR+8N
+1bcPnbB11b5ary99F/mqr7RgQ+YFF0uKRE3SKa7a+6cIuHEZ7Za+zhPaQlzAOZlx
+fuBmScum8uQTrEF5+Um5zkwC7EXTdH1co/+/V/fpOtxIg4XO4kcugZefVm5ERfVS
+MA==
+=dtMN
 -----END PGP PUBLIC KEY BLOCK-----
 ' | apt-key add -
 
 apt-get update
+
+apt-get install -y python-singledispatch
+
+wget http://httpredir.debian.org/debian/pool/main/p/python-backports-abc/python-backports-abc_0.4-2_all.deb
+
+dpkg -i python-backports-abc_0.4-2_all.deb
+
+wget http://httpredir.debian.org/debian/pool/main/p/python-tornado/python-tornado_4.4.1-1_i386.deb
+
+dpkg -i python-tornado_4.4.1-1_i386.deb
 
 apt-get install -y salt-minion
 

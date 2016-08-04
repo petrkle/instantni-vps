@@ -68,7 +68,7 @@ install-php-pkgs:
         - php7.0-json
         - php7.0-mcrypt
         - php7.0-mbstring
-        - php7.0-dom
+        - php7.0-xml
         - php7.0-zip
         - php7.0-bz2
 
