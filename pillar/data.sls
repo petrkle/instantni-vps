@@ -58,8 +58,8 @@ roundcube:
   md5: 2bfe8dc203abc82c88b2053fa9fc393f
 
 phpmyadmin:
-  version: "4_6_3"
-  md5: 4b9dbc83799fd81938601512b3092e73
+  version: "4_6_4"
+  md5: b4c2d51f09cda889ac741ab2383cc379
 
 mysql:
   root_password: n6kjNL8cvqkuvcg
