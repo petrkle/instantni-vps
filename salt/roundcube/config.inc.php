@@ -3,7 +3,7 @@ $config['db_dsnw'] = 'sqlite:////usr/share/nginx/roundcubemail.db?mode=0646';
 $config['log_driver'] = 'syslog';
 $config['syslog_facility'] = LOG_MAIL;
 $config['default_host'] = 'ssl://{{ pillar.mailname }}';
-$config['smtp_server'] = 'tls://{{ pillar.mailname }}';
+$config['smtp_server'] = 'tls://{{ pillar.mailname }}:587';
 $config['smtp_user'] = '%u';
 $config['smtp_pass'] = '%p';
 $config['support_url'] = 'http://{{ pillar.domain_example }}';

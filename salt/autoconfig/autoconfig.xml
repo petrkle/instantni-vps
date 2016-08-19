@@ -14,7 +14,7 @@
     </incomingServer>
     <outgoingServer type="smtp">
       <hostname>{{ pillar.mailname }}</hostname>
-      <port>25</port>
+      <port>587</port>
       <socketType>STARTTLS</socketType>
       <authentication>password-cleartext</authentication>
       <username>%EMAILADDRESS%</username>

@@ -57,12 +57,16 @@ firewall_start() {
 	$IPT -A INPUT -i {{ iface }} -p tcp --destination-port 25 -m state --state NEW -j ACCEPT
 	$IPT -A INPUT -i {{ iface }} -p tcp --destination-port 80 -m state --state NEW -j ACCEPT
 	$IPT -A INPUT -i {{ iface }} -p tcp --destination-port 443 -m state --state NEW -j ACCEPT
+	$IPT -A INPUT -i {{ iface }} -p tcp --destination-port 465 -m state --state NEW -j ACCEPT
+	$IPT -A INPUT -i {{ iface }} -p tcp --destination-port 587 -m state --state NEW -j ACCEPT
 	$IPT -A INPUT -i {{ iface }} -p tcp --destination-port 993 -m state --state NEW -j ACCEPT
 	$IPT -A INPUT -i {{ iface }} -p tcp --destination-port {{ pillar.ssh_port }} -m state --state NEW -j ACCEPT
 
 	$IPT6 -A INPUT -i {{ iface }} -p tcp --destination-port 25 -m state --state NEW -j ACCEPT
 	$IPT6 -A INPUT -i {{ iface }} -p tcp --destination-port 80 -m state --state NEW -j ACCEPT
 	$IPT6 -A INPUT -i {{ iface }} -p tcp --destination-port 443 -m state --state NEW -j ACCEPT
+	$IPT6 -A INPUT -i {{ iface }} -p tcp --destination-port 465 -m state --state NEW -j ACCEPT
+	$IPT6 -A INPUT -i {{ iface }} -p tcp --destination-port 587 -m state --state NEW -j ACCEPT
 	$IPT6 -A INPUT -i {{ iface }} -p tcp --destination-port 993 -m state --state NEW -j ACCEPT
 	$IPT6 -A INPUT -i {{ iface }} -p tcp --destination-port {{ pillar.ssh_port }} -m state --state NEW -j ACCEPT
 {% endif %}
