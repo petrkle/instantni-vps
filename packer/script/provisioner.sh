@@ -45,13 +45,16 @@ apt-get update
 
 apt-get install -y python-singledispatch
 
-wget http://httpredir.debian.org/debian/pool/main/p/python-backports-abc/python-backports-abc_0.4-2_all.deb
+TORNADO=python-tornado_4.4.2-1_i386.deb
+PBA=python-backports-abc_0.4-2_all.deb
 
-dpkg -i python-backports-abc_0.4-2_all.deb
+wget http://httpredir.debian.org/debian/pool/main/p/python-backports-abc/$PBA
 
-wget http://httpredir.debian.org/debian/pool/main/p/python-tornado/python-tornado_4.4.1-2_i386.deb
+dpkg -i $PBA
 
-dpkg -i python-tornado_4.4.1-2_i386.deb
+wget http://httpredir.debian.org/debian/pool/main/p/python-tornado/$TORNADO
+
+dpkg -i $TORNADO
 
 apt-get install -y salt-minion
 
