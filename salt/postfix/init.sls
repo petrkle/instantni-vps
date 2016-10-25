@@ -140,7 +140,7 @@ run-postmap-virtual:
   cmd.wait:
     - name: /usr/sbin/postmap /etc/postfix/virtual
     - cwd: /etc/postfix
-    - user: root
+    - runas: root
     - watch:
       - file: /etc/postfix/virtual
     - watch_in:
@@ -150,7 +150,7 @@ run-postmap-mailboxes:
   cmd.wait:
     - name: /usr/sbin/postmap /etc/postfix/mailboxes
     - cwd: /etc/postfix
-    - user: root
+    - runas: root
     - watch:
       - file: /etc/postfix/mailboxes
     - watch_in:
@@ -159,7 +159,7 @@ run-postmap-mailboxes:
 run-postmap-domains:
   cmd.wait:
     - name: /usr/sbin/postmap /etc/postfix/domains
-    - user: root
+    - runas: root
     - cwd: /etc/postfix
     - watch:
       - file: /etc/postfix/domains
@@ -169,7 +169,7 @@ run-postmap-domains:
 run-postmap-transport:
   cmd.wait:
     - name: /usr/sbin/postmap /etc/postfix/transport
-    - user: root
+    - runas: root
     - cwd: /etc/postfix
     - watch:
       - file: /etc/postfix/transport
@@ -179,7 +179,7 @@ run-postmap-transport:
 run-postmap-rbl-whitelis:
   cmd.wait:
     - name: /usr/sbin/postmap /etc/postfix/rbl-whitelist
-    - user: root
+    - runas: root
     - cwd: /etc/postfix
     - watch:
       - file: /etc/postfix/rbl-whitelist
@@ -190,7 +190,7 @@ run-postmap-sasl-senders:
   cmd.wait:
     - name: /usr/sbin/postmap /etc/postfix/sasl-senders
     - cwd: /etc/postfix
-    - user: root
+    - runas: root
     - watch:
       - file: /etc/postfix/sasl-senders
     - watch_in:
@@ -200,7 +200,7 @@ run-postmap-require-auth-domains:
   cmd.wait:
     - name: /usr/sbin/postmap /etc/postfix/require-auth-domains
     - cwd: /etc/postfix
-    - user: root
+    - runas: root
     - watch:
       - file: /etc/postfix/require-auth-domains
     - watch_in:

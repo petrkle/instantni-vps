@@ -8,8 +8,7 @@
 dotdeb-keys:
   cmd.script:
     - source: salt://php/dotdeb-key.sh
-    - user: root
-    - group: root
+    - runas: root
     - shell: /bin/bash
     - unless: 'apt-key list | grep 89DF5277'
 

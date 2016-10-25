@@ -8,8 +8,7 @@
 nginx-keys:
   cmd.script:
     - source: salt://nginx/nginx-key.sh
-    - user: root
-    - group: root
+    - runas: root
     - shell: /bin/bash
     - unless: 'apt-key list | grep 7BD9BF62'
 

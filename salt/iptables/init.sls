@@ -2,8 +2,7 @@ firewall:
  cmd.run:
   - name: 'update-rc.d firewall defaults && /etc/init.d/firewall start'
   - cwd: /etc/init.d
-  - user: root
-  - group: root
+  - runas: root
   - unless: 'service firewall'
   - require:
      - file: /etc/init.d/firewall

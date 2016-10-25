@@ -49,8 +49,7 @@ fakemail:
  cmd.run:
   - name: update-rc.d fakemail defaults ; /etc/init.d/fakemail start
   - cwd: /etc/init.d
-  - user: root
-  - group: root
+  - runas: root
   - unless: service fakemail
   - require:
      - file: /etc/init.d/fakemail

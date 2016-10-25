@@ -75,8 +75,7 @@ db-dir-dir-create:
 
 create-default-roundcube-db:
   cmd.run:
-    - user: www-data
-    - group: www-data
+    - runas: www-data
     - name: sqlite3 /usr/share/nginx/roundcubemail.db < /home/www/roundcube/roundcubemail-{{ pillar.roundcube.version }}/SQL/sqlite.initial.sql
     - unless: test -f /usr/share/nginx/roundcubemail.db
 

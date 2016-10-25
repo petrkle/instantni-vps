@@ -8,7 +8,7 @@
 run-c_rehash:
   cmd.wait:
     - name: c_rehash
-    - user: root
+    - runas: root
     - cwd: /etc/ssl/certs
     - watch:
       - file: /etc/ssl/certs/exampleCA.pem
