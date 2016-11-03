@@ -48,7 +48,8 @@
             "disk_size": 30140,
             "vboxmanage": [
                 ["modifyvm", "{{.Name}}", "--memory", "2048"],
-                ["modifyvm", "{{.Name}}", "--cpus", "2"]
+                ["modifyvm", "{{.Name}}", "--cpus", "2"],
+                ["modifyvm", "{{.Name}}", "--vram", "16"]
             ]
         }],
     "provisioners": [{
