@@ -1,6 +1,7 @@
 https://tt-rss.org/gitlab/fox/tt-rss.git:
   git.latest:
     - target: /home/www/ttrss
+    - force_reset: True
 
 /home/www/ttrss/config.php:
  file.managed:
@@ -28,7 +29,7 @@ ttrss_db:
   require:
     - service: mysql
 
-ttrss-db-schem:
+ttrss-db-schema:
   cmd.run:
     - name: mysql ttrss < /home/www/ttrss/schema/ttrss_schema_mysql.sql
     - unless: test `echo 'show tables;' | mysql ttrss | wc -l` -gt 0
