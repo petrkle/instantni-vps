@@ -1,16 +1,12 @@
-/etc/apt/sources.list.d/nginx.list:
- file.managed:
-  - source: salt://nginx/nginx.list
-  - mode: 644
-  - user: root
-  - group: root
-
-nginx-keys:
-  cmd.script:
-    - source: salt://nginx/nginx-key.sh
-    - runas: root
-    - shell: /bin/bash
-    - unless: 'apt-key list | grep 7BD9BF62'
+user-nginx:
+  user.present:
+    - name: nginx
+    - fullname: nginx
+    - shell: /bin/true
+    - home: /dev/null
+    - createhome: False
+    - optional_groups:
+      - www-data
 
 nginx:
   pkg.installed:

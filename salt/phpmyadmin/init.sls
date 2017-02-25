@@ -10,7 +10,7 @@ phpmyadmin:
     - name: /home/www/phpmyadmin
     - source: https://github.com/phpmyadmin/phpmyadmin/archive/RELEASE_{{ pillar.phpmyadmin.version }}.tar.gz
     - source_hash: md5={{ pillar.phpmyadmin.md5 }}
-    - tar_options: --ungzip --same-owner
+    - options: --ungzip --same-owner
     - archive_format: tar
     - if_missing: /home/www/phpmyadmin/phpmyadmin-RELEASE_{{ pillar.phpmyadmin.version }}
     - require:

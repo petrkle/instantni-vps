@@ -5,7 +5,7 @@ set -e
 # Exit if we use any unset variable (use ${VAR:-} to test for unset var)
 set -o nounset
 
-echo 'deb http://repo.saltstack.com/apt/debian/8/amd64/archive/2016.3.2 jessie main' > /etc/apt/sources.list.d/saltstack.list
+echo 'deb http://repo.saltstack.com/apt/debian/8/amd64/archive/2016.11.2 jessie main' > /etc/apt/sources.list.d/saltstack.list
 
 echo '
 -----BEGIN PGP PUBLIC KEY BLOCK-----
@@ -42,19 +42,6 @@ MA==
 ' | apt-key add -
 
 apt-get update
-
-apt-get install -y python-singledispatch
-
-TORNADO=python-tornado_4.4.2-1_i386.deb
-PBA=python-backports-abc_0.4-2_all.deb
-
-wget http://httpredir.debian.org/debian/pool/main/p/python-backports-abc/$PBA
-
-dpkg -i $PBA
-
-wget http://httpredir.debian.org/debian/pool/main/p/python-tornado/$TORNADO
-
-dpkg -i $TORNADO
 
 apt-get install -y salt-minion
 

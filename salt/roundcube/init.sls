@@ -10,7 +10,7 @@ roundcube-mail:
     - name: /home/www/roundcube
     - source: https://github.com/roundcube/roundcubemail/releases/download/{{ pillar.roundcube.version }}/roundcubemail-{{ pillar.roundcube.version }}-complete.tar.gz
     - source_hash: md5={{ pillar.roundcube.md5 }}
-    - tar_options: --ungzip --same-owner
+    - options: --ungzip --same-owner
     - archive_format: tar
     - if_missing: /home/www/roundcube/roundcubemail-{{ pillar.roundcube.version }}
     - require:
