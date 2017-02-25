@@ -8,6 +8,6 @@
 	compress
 	delaycompress
 	postrotate
-		invoke-rc.d php7.0-fpm reopen-logs > /dev/null
+		invoke-rc.d php7.1-fpm reopen-logs > /dev/null
 	endscript
 }

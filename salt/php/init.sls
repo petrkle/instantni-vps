@@ -1,16 +1,9 @@
-/etc/apt/sources.list.d/dotdeb.list:
- file.managed:
-  - source: salt://php/dotdeb.list
-  - mode: 644
-  - user: root
-  - group: root
-
-dotdeb-keys:
-  cmd.script:
-    - source: salt://php/dotdeb-key.sh
-    - runas: root
-    - shell: /bin/bash
-    - unless: 'apt-key list | grep 89DF5277'
+sury-php:
+  pkgrepo.managed:
+    - humanname: sury-php
+    - name: deb https://packages.sury.org/php/ jessie main
+    - file: /etc/apt/sources.list.d/sury-php.list
+    - key_url: salt://php/sury.php.gpg
 
 php-home-www-dir-create:
   file.directory:
@@ -20,34 +13,17 @@ php-home-www-dir-create:
     - mode: 0755
     - makedirs: True
 
-remove-php5-pkgs:
-  pkg:
-    - removed
-    - names:
-        - php5-curl
-        - php5-cli
-        - php5-gd
-        - php5-mcrypt
-        - php5-mysql
-        - php5-intl
-        - php5-sqlite
-        - php5-common
-        - php5-json
-
-/etc/init.d/php5-fpm:
- file.absent
-
-php70-fpm:
+php71-fpm:
   pkg.installed:
-    - name: php7.0-fpm
+    - name: php7.1-fpm
   service.running:
-    - name: php7.0-fpm
+    - name: php7.1-fpm
     - enable: True
     - watch:
-       - file: /etc/php/7.0/fpm/php-fpm.conf
-       - file: /etc/php/7.0/fpm/php.ini
+       - file: /etc/php/7.1/fpm/php-fpm.conf
+       - file: /etc/php/7.1/fpm/php.ini
 {% for pool, args in pillar['fpm_pools'].iteritems() %}
-       - file: /etc/php/7.0/fpm/pool.d/{{ pool }}.conf
+       - file: /etc/php/7.1/fpm/pool.d/{{ pool }}.conf
 {% endfor %}
 {% for website in pillar.nginx_confs %}
        - file: /etc/nginx/conf.d/{{ website }}.conf
@@ -57,23 +33,23 @@ install-php-pkgs:
   pkg:
     - installed
     - names:
-        - php7.0-common
-        - php7.0-curl
-        - php7.0-cli
-        - php7.0-gd
-        - php7.0-mysql
-        - php7.0-intl
-        - php7.0-sqlite3
-        - php7.0-json
-        - php7.0-mcrypt
-        - php7.0-mbstring
-        - php7.0-xml
-        - php7.0-zip
-        - php7.0-bz2
+        - php7.1-common
+        - php7.1-curl
+        - php7.1-cli
+        - php7.1-gd
+        - php7.1-mysql
+        - php7.1-intl
+        - php7.1-sqlite3
+        - php7.1-json
+        - php7.1-mcrypt
+        - php7.1-mbstring
+        - php7.1-xml
+        - php7.1-zip
+        - php7.1-bz2
 
 {% for pool, args in pillar['fpm_pools'].iteritems() %}
 
-/etc/php/7.0/fpm/pool.d/{{ pool }}.conf:
+/etc/php/7.1/fpm/pool.d/{{ pool }}.conf:
  file.managed:
   - source: salt://php/{{ pool }}.conf
   - template: jinja
@@ -115,14 +91,14 @@ php-home-dir-{{ pool }}-create:
   - user: root
   - group: root
 
-/etc/php/7.0/fpm/php-fpm.conf:
+/etc/php/7.1/fpm/php-fpm.conf:
  file.managed:
   - source: salt://php/php-fpm.conf
   - mode: 644
   - user: root
   - group: root
 
-/etc/php/7.0/fpm/php.ini:
+/etc/php/7.1/fpm/php.ini:
  file.managed:
   - source: salt://php/php.ini
   - mode: 644

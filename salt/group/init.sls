@@ -58,7 +58,7 @@ group-sasl-www-data:
     - require:
       - service: saslauthd
       - service: nginx
-      - service: php7.0-fpm
+      - service: php7.1-fpm
 
 
 group-postfix-cyrus:
