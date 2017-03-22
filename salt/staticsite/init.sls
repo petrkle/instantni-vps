@@ -1,3 +1,3 @@
 https://github.com/petrkle/html5-sablona.git:
   git.latest:
-    - target: /home/www/www
+    - target: /home/www/staticsite
