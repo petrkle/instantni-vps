@@ -9,3 +9,10 @@ apticron:
   - mode: 644 
   - user: root
   - group: root
+
+/usr/local/bin/akt.sh:
+ file.managed:
+  - source: salt://apticron/akt.sh
+  - mode: 700
+  - user: root
+  - group: root
