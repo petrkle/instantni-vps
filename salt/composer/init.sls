@@ -10,3 +10,11 @@ install-composer:
     - cwd: /root/
     - watch:
       - cmd: get-composer
+
+var-www-dir-owner:
+  file.directory:
+    - name: /var/www/
+    - user: www-data
+    - group: www-data
+    - mode: 0755
+    - makedirs: True

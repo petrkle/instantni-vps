@@ -25,6 +25,21 @@ roundcube-mail:
   - group: www-data
   - makedirs: True
 
+/home/www/roundcube/roundcubemail-{{ pillar.roundcube.version }}/composer.json:
+ file.managed:
+  - source: salt://roundcube/composer.json
+  - mode: 644
+  - template: jinja
+  - user: www-data
+  - group: www-data
+
+install-roundcube-plugins:
+  cmd.run:
+    - cwd: /home/www/roundcube/roundcubemail-{{ pillar.roundcube.version }}
+    - runas: www-data
+    - name: yes | /usr/local/bin/composer update --no-dev
+    - unless: test -f /home/www/roundcube/roundcubemail-{{ pillar.roundcube.version }}/composer.lock
+
 chown-roundcube-recursive:
   cmd.run:
     - name: chown -R www-data.www-data /home/www/roundcube/roundcubemail-{{ pillar.roundcube.version }}
