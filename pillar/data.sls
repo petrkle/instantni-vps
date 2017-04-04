@@ -122,6 +122,7 @@ utils:
  - colordiff
  - apt-transport-https
  - nmap
+ - telnet
  - unp
  - libio-socket-ip-perl
  - libnet-server-mail-perl
