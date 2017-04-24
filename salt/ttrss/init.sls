@@ -1,4 +1,4 @@
-https://tt-rss.org/gitlab/fox/tt-rss.git:
+https://tt-rss.org/fox/tt-rss.git:
   git.latest:
     - target: /home/www/ttrss
     - force_reset: True
