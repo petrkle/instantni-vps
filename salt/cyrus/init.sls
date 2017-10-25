@@ -1,6 +1,6 @@
 cyrus-imapd:
   pkg.installed:
-    - name: cyrus-imapd-2.4
+    - name: cyrus-imapd
     - require:
         - service: saslauthd
   service.running:
@@ -10,7 +10,7 @@ cyrus-imapd:
         - file: /etc/cyrus.conf
         - file: /etc/imapd.conf
 
-cyrus-admin-2.4:
+cyrus-admin:
   pkg:
     - installed
 

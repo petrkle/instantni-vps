@@ -1,7 +1,7 @@
 nginx-repo:
   pkgrepo.managed:
     - humanname: nginx
-    - name: deb http://nginx.org/packages/mainline/debian/ jessie nginx
+    - name: deb http://nginx.org/packages/mainline/debian/ stretch nginx
     - file: /etc/apt/sources.list.d/nginx.list
     - key_url: salt://nginx/nginx_signing.key
 

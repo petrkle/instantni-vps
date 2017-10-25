@@ -6,8 +6,8 @@ admin_user: {{ admin_user() }} # uživatel který spravuje server
 {% if grains['testmachine'] != 'OK' %}
 # ostrý provoz
 
-ipv4adress: {{ grains.ip_interfaces.eth0[0] }}
-ipv6adress: {{ grains.ipv6[0] }}
+ipv4adress: {{ grains.ip4[0] }}
+ipv6adress: {{ grains.ip6[0] }}
 
 {% macro domain_example() %}example.com{% endmacro %}
 {% macro domain_foo() %}foo.com{% endmacro %}
@@ -17,7 +17,7 @@ hostname: instant-vps.{{ domain_example() }}
 {% else %} 
 # testovací prostředí
 
-ipv4adress: {{ grains.ip_interfaces.eth0[0] }}
+ipv4adress: {{ grains.ipv4[0] }}
 ipv6adress: {{ grains.ipv6[0] }}
 
 {% macro domain_example() %}example.cz{% endmacro %}
@@ -54,8 +54,8 @@ fakemail:
   home: /home/fakemail
 
 roundcube:
-  version: 1.2.4
-  md5: b415dd9f709f59abda83af87ddb776ae
+  version: 1.3.1
+  md5: aabe994d34ad5357c3eeb78b767b9c96
 
 phpmyadmin:
   version: "4_6_6"

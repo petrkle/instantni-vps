@@ -1,15 +1,15 @@
 {
     "variables": {
-        "iso_url": "http://cdimage.debian.org/debian-cd/8.7.1/amd64/iso-cd/debian-8.7.1-amd64-netinst.iso",
-        "iso_checksum": "749a15b7690769dd99e85d6104182a03d370b04b36106ec7cfaf6a551aa89fb4",
+        "iso_url": "https://cdimage.debian.org/debian-cd/9.2.1/amd64/iso-cd/debian-9.2.1-amd64-netinst.iso",
+        "iso_checksum": "ec78bc48b48d676775b60eda41528ec33c151c2ce7414a12b13d9b73d34de544",
         "iso_checksum_type": "sha256",
-        "preseed": "debian8.cfg",
+        "preseed": "debian.cfg",
         "domain": "kle.cz",
         "ssh_username": "vagrant",
         "ssh_password": "vagrant",
         "vm_name": "instantni-vps",
         "box_name": "instantni-vps",
-        "box_version": "0.0.6",
+        "box_version": "0.0.7",
         "locale": "en_US",
         "language": "en"
     },

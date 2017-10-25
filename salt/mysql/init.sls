@@ -1,6 +1,6 @@
 mysql:
   pkg.installed:
-    - name: mysql-server
+    - name: mariadb-server
 
 mysqlpython:
   pkg.installed:
@@ -12,7 +12,7 @@ myql-server:
     - name: mysql
     - enable: True
     - require:
-      - pkg: mysql-server
+      - pkg: mariadb-server
       - pkg: python-mysqldb
   mysql_user:
     - present

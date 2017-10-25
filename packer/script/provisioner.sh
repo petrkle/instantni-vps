@@ -5,7 +5,7 @@ set -e
 # Exit if we use any unset variable (use ${VAR:-} to test for unset var)
 set -o nounset
 
-echo 'deb http://repo.saltstack.com/apt/debian/8/amd64/archive/2016.11.2 jessie main' > /etc/apt/sources.list.d/saltstack.list
+echo 'deb http://repo.saltstack.com/apt/debian/9/amd64/latest stretch main' > /etc/apt/sources.list.d/saltstack.list
 
 echo '
 -----BEGIN PGP PUBLIC KEY BLOCK-----
