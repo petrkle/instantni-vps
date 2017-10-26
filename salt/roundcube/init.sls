@@ -1,4 +1,4 @@
-roundcube-dir-create:
+roundcube-dir-create2:
   file.directory:
     - name: /home/www/roundcube
     - user: www-data
@@ -10,8 +10,8 @@ roundcube-mail:
     - name: /home/www/roundcube
     - source: https://github.com/roundcube/roundcubemail/releases/download/{{ pillar.roundcube.version }}/roundcubemail-{{ pillar.roundcube.version }}-complete.tar.gz
     - source_hash: md5={{ pillar.roundcube.md5 }}
-    - options: --ungzip --same-owner
-    - archive_format: tar
+    - user: www-data
+    - group: www-data
     - if_missing: /home/www/roundcube/roundcubemail-{{ pillar.roundcube.version }}
     - require:
       - file: /home/www/roundcube
@@ -39,11 +39,6 @@ install-roundcube-plugins:
     - runas: www-data
     - name: yes | /usr/local/bin/composer update --no-dev
     - unless: test -f /home/www/roundcube/roundcubemail-{{ pillar.roundcube.version }}/composer.lock
-
-chown-roundcube-recursive:
-  cmd.run:
-    - name: chown -R www-data.www-data /home/www/roundcube/roundcubemail-{{ pillar.roundcube.version }}
-    - unless: test `stat -c '%U' /home/www/roundcube/roundcubemail-{{ pillar.roundcube.version }}/` = www-data
 
 rcm-delete-installer:
  file.absent:

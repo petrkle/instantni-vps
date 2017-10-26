@@ -7,6 +7,6 @@ CONFIRM="confirm=1"
 
 sed -i "/$CONFIRM/d" $LCF
 
-apt-get update && apt-get -o Dpkg::Options::="--force-confold" dist-upgrade -q -y --force-yes
+apt-get update && apt-get -o Dpkg::Options::="--force-confold" dist-upgrade -q -y
 
 echo "$CONFIRM" >> $LCF

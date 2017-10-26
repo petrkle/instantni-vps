@@ -10,8 +10,8 @@ phpmyadmin:
     - name: /home/www/phpmyadmin
     - source: https://github.com/phpmyadmin/phpmyadmin/archive/RELEASE_{{ pillar.phpmyadmin.version }}.tar.gz
     - source_hash: md5={{ pillar.phpmyadmin.md5 }}
-    - options: --ungzip --same-owner
-    - archive_format: tar
+    - user: www-data
+    - group: www-data
     - if_missing: /home/www/phpmyadmin/phpmyadmin-RELEASE_{{ pillar.phpmyadmin.version }}
     - require:
       - file: /home/www/phpmyadmin
@@ -26,8 +26,9 @@ phpmyadmin:
   - require:
      - file: /home/www/phpmyadmin
 
-
-chown-phpmyadmin-recursive:
+install-phpmyadmin-libs:
   cmd.run:
-    - name: chown -R www-data.www-data /home/www/phpmyadmin/phpmyadmin-RELEASE_{{ pillar.phpmyadmin.version }}
-    - unless: test `stat -c '%U' /home/www/phpmyadmin/phpmyadmin-RELEASE_{{ pillar.phpmyadmin.version }}` = www-data
+    - cwd: /home/www/phpmyadmin/phpmyadmin-RELEASE_{{ pillar.phpmyadmin.version }}
+    - runas: www-data
+    - name: yes | /usr/local/bin/composer update --no-dev
+    - unless: test -d /home/www/phpmyadmin/phpmyadmin-RELEASE_{{ pillar.phpmyadmin.version }}/vendor

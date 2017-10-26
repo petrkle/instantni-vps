@@ -59,4 +59,8 @@ pillar_roots:
     - /vagrant/pillar
 " > /etc/salt/minion
 
+/etc/init.d/salt-minion stop
+
+update-rc.d -f salt-minion remove
+
 echo "testmachine: OK" > /etc/salt/grains

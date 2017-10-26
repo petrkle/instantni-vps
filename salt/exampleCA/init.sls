@@ -1,6 +1,6 @@
 /etc/ssl/certs/exampleCA.pem:
  file.managed:
-  - source: salt://exampleCA/cacert.pem
+  - source: salt://exampleCA/exampleCA.pem
   - mode: 644
   - user: root
   - group: root
@@ -22,7 +22,7 @@ cert-dir-create:
 
 {% if grains['testmachine'] == 'OK' %}
 
-/etc/cert/example.pem:
+/etc/cert/example.cz.pem:
  file.managed:
   - source: salt://exampleCA/example.cz.pem
   - mode: 644 
@@ -31,7 +31,7 @@ cert-dir-create:
   - require:
      - file: cert-dir-create
 
-/etc/cert/example.key:
+/etc/cert/example.cz.key:
  file.managed:
   - source: salt://exampleCA/example.cz.key
   - mode: 644 
@@ -40,9 +40,27 @@ cert-dir-create:
   - require:
      - file: cert-dir-create
 
+/etc/cert/star.example.cz.pem:
+ file.managed:
+  - source: salt://exampleCA/star.example.cz.pem
+  - mode: 644 
+  - user: root
+  - group: root
+  - require:
+     - file: cert-dir-create
+
+/etc/cert/star.example.cz.key:
+ file.managed:
+  - source: salt://exampleCA/star.example.cz.key
+  - mode: 644 
+  - user: root
+  - group: root
+  - require:
+     - file: cert-dir-create
+
 {% else %}
 
-/etc/cert/example.pem:
+/etc/cert/example.com.pem:
  file.managed:
   - source: salt://exampleCA/example.com.pem
   - mode: 644 
@@ -51,9 +69,27 @@ cert-dir-create:
   - require:
      - file: cert-dir-create
 
-/etc/cert/example.key:
+/etc/cert/example.com.key:
  file.managed:
   - source: salt://exampleCA/example.com.key
+  - mode: 644 
+  - user: root
+  - group: root
+  - require:
+     - file: cert-dir-create
+
+/etc/cert/star.example.com.pem:
+ file.managed:
+  - source: salt://exampleCA/star.example.com.pem
+  - mode: 644 
+  - user: root
+  - group: root
+  - require:
+     - file: cert-dir-create
+
+/etc/cert/star.example.com.key:
+ file.managed:
+  - source: salt://exampleCA/star.example.com.key
   - mode: 644 
   - user: root
   - group: root

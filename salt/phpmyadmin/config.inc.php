@@ -1,5 +1,5 @@
 <?php
-$cfg['blowfish_secret'] = 'Fqx8lhwlccopkcqucrzaykfchuxH4c';
+$cfg['blowfish_secret'] = 'Fqx8lhwlccopkcqucrzaykfchuxH4cbpuGPvaVsDHBAWRmj3kTCwX9M';
 $cfg['PmaNoRelation_DisableWarning'] = true;
 $cfg['VersionCheck'] = false;
 $cfg['NavigationTreeEnableGrouping'] = false;

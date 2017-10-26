@@ -1,7 +1,7 @@
 sury-php:
   pkgrepo.managed:
     - humanname: sury-php
-    - name: deb https://packages.sury.org/php/ jessie main
+    - name: deb https://packages.sury.org/php/ stretch main
     - file: /etc/apt/sources.list.d/sury-php.list
     - key_url: salt://php/sury.php.gpg
 
@@ -36,7 +36,9 @@ install-php-pkgs:
         - php7.1-common
         - php7.1-curl
         - php7.1-cli
+        - php7.1-gd
         - php7.1-mysql
+        - php7.1-intl
         - php7.1-sqlite3
         - php7.1-json
         - php7.1-mcrypt

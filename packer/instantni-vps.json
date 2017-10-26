@@ -9,7 +9,7 @@
         "ssh_password": "vagrant",
         "vm_name": "instantni-vps",
         "box_name": "instantni-vps",
-        "box_version": "0.0.7",
+        "box_version": "0.0.8",
         "locale": "en_US",
         "language": "en"
     },

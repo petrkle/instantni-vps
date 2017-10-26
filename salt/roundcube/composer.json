@@ -4,49 +4,31 @@
     "license": "GPL-3.0+",
     "repositories": [
         {
-            "type": "pear",
-            "url": "https://pear.php.net/"
-        },
-        {
             "type": "composer",
             "url": "https://plugins.roundcube.net/"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/roundcube/Net_Sieve.git"
-        },
-        {
-            "type": "vcs",
-            "url": "https://git.kolab.org/diffusion/PNL/php-net_ldap.git"
-        }
-    ],
+        }    ],  
     "require": {
-        "php": ">=5.3.7",
-        "roundcube/plugin-installer": "~0.1.6",
-        "pear-pear.php.net/net_socket": "~1.0.12",
-        "pear-pear.php.net/auth_sasl": "~1.0.6",
-        "pear-pear.php.net/net_idna2": "~0.1.1",
-        "pear-pear.php.net/mail_mime": "~1.10.0",
-        "pear-pear.php.net/net_smtp": "~1.7.1",
-        "pear-pear.php.net/crypt_gpg": "~1.4.2",
-        "roundcube/authres_status": "dev-master",
-        "roundcube/carddav": "dev-master",
-        "weird-birds/thunderbird_labels": "dev-master",
-        "roundcube/net_sieve": "~1.5.0",
-        "johndoh/contextmenu": "2.1.2",
+        "php": ">=5.4.0",
         "pear/pear-core-minimal": "~1.10.1",
-        "kitist/html5_notifier": "0.6.2",
+        "pear/net_socket": "~1.2.1",
+        "pear/auth_sasl": "~1.1.0",
+        "pear/net_idna2": "~0.2.0",
+        "pear/mail_mime": "~1.10.0",
+        "pear/net_smtp": "~1.7.1",
+        "pear/crypt_gpg": "~1.6.0",
+        "pear/net_sieve": "~1.4.0",
+        "roundcube/plugin-installer": "~0.1.6",
+        "endroid/qrcode": "~1.6.5",
+        "johndoh/contextmenu": "2.3",
         "pek/settings_link": "dev-master",
         "pek/hide_filter_sets": "dev-master",
-				"endroid/qrcode": "~1.6.5",
-        "pek/simple_compose": "dev-master"
-    },
+        "pek/simple_compose": "dev-master",
+        "weird-birds/thunderbird_labels": "dev-master",
+        "roundcube/authres_status": "dev-master",
+        "kitist/html5_notifier": "0.6.2"
+    },  
     "require-dev": {
-        "phpunit/phpunit": "*"
-    },
-    "suggest": {
-        "pear-pear.php.net/net_ldap2": "~2.2.0 required for connecting to LDAP address books",
-        "kolab/Net_LDAP3": "dev-master required for connecting to LDAP address books"
-    },
+        "phpunit/phpunit": "~5.7.15"
+    },  
     "minimum-stability": "dev"
 }

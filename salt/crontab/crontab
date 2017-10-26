@@ -10,7 +10,7 @@ MAILTO={{ pillar.admin_user }}@{{ pillar.base_mail_domain }}
 #
 
 # stahovani rss
-15,45 * * * * www-data [ -f /home/www/ttrss/update.php ] && /usr/bin/php -c /etc/php/7.0/fpm/php.ini /home/www/ttrss/update.php --feeds --quiet
+15,45 * * * * www-data [ -f /home/www/ttrss/update.php ] && /usr/bin/php -c /etc/php/7.1/fpm/php.ini /home/www/ttrss/update.php --feeds --quiet
 
 # awstats
 30 3 * * * root [ -x /usr/local/bin/wwwstats.sh ] && nice -19 ionice -c 3 /usr/local/bin/wwwstats.sh
